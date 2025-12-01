@@ -57,9 +57,9 @@ const Navbar = ({ user: initialUser = null, onLogout = () => {} }) => {
 
   const accountItems = [
     { label: 'الملف الشخصي', icon: <User size={16} />, to: '/profile' },
-    { label: 'لوحة التحكم', icon: <Grid size={16} />, to: '/dashboard' },
-    { label: 'الحجوزات', icon: <BookOpen size={16} />, to: '/booking' },
-    { label: 'الإعدادات', icon: <Settings size={16} />, to: '/settings' },
+    { label: 'لوحة التحكم', icon: <Grid size={16} />, to: '/admin' },
+    { label: 'الحجوزات', icon: <BookOpen size={16} />, to: 'admin/bookings' },
+    { label: 'الإعدادات', icon: <Settings size={16} />, to: 'admin/settings' },
   ];
 
   const handleLogout = () => {
@@ -173,13 +173,6 @@ const Navbar = ({ user: initialUser = null, onLogout = () => {} }) => {
                 </Button>
               </Link>
             )}
-
-            {/* زر احجز جلسة */}
-            <Link to="/booking">
-              <Button variant="gold" size="lg">
-                احجز جلسة
-              </Button>
-            </Link>
           </div>
 
           {/* زر القائمة للجوال */}

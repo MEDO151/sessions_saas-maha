@@ -3,7 +3,7 @@ import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Link } from 'react-router-dom';
 import { Sparkles, Heart, TrendingUp, Compass, Video, Calendar, MessageSquare } from 'lucide-react';
-import heroBg from '@/assets/hero-bg.jpg';
+import heroBg from '../assets/hero.jpg';
 
 const Home = () => {
   const fadeIn = {
@@ -66,20 +66,20 @@ const Home = () => {
   ];
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen relative">
+      <div
+        className="fixed inset-0 -z-10"
+        style={{
+          backgroundImage: `url(${heroBg})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+          opacity: 1,
+        }}
+      />
 
       {/* القسم الرئيسي */}
       <section className="relative min-h-screen flex items-center justify-center px-4 pt-20">
-        <div 
-          className="absolute inset-0 opacity-20"
-          style={{
-            backgroundImage: `url(${heroBg})`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-          }}
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-white/95 via-white/90 to-white" />
-        
         <motion.div
           initial="hidden"
           animate="visible"
@@ -91,11 +91,11 @@ const Home = () => {
             اكتشف أفضل نسخة من{' '}
             <span className="text-primary">نفسك</span>
           </h1>
-          
+
           <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto">
             استشفاء، تطوير، رفاهية، واستكشاف للكينونة من خلال جلسات تدريبية مخصصة
           </p>
-          
+
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Link to="/booking">
               <Button variant="gold" size="xl" className="gap-2">
@@ -113,7 +113,7 @@ const Home = () => {
       </section>
 
       {/* القيم الأساسية */}
-      <section className="py-20 px-4 bg-gradient-to-b from-secondary/20 to-background">
+      <section className="py-20 px-4 bg-background">
         <div className="container mx-auto">
           <motion.div
             initial="hidden"
@@ -167,12 +167,12 @@ const Home = () => {
                 تعرّف على <span className="text-primary">مدربتك</span>
               </h2>
               <p className="text-muted-foreground text-lg mb-6">
-                أنا مها الضافر، مدربة حياة معتمدة، أساعد الأفراد على خوض رحلات تحويلية 
-                نحو اكتشاف الذات والنمو المستمر. أقدّم استشارات تطويرية وعلاجية 
+                أنا مها الضافر، مدربة حياة معتمدة، أساعد الأفراد على خوض رحلات تحويلية
+                نحو اكتشاف الذات والنمو المستمر. أقدّم استشارات تطويرية وعلاجية
                 في بيئة آمنة وداعمة للشفاء والتمكين.
               </p>
               <p className="text-muted-foreground text-lg mb-8">
-                أسلوبي يجمع بين التقنيات العلمية الحديثة والاستماع المتفهم، 
+                أسلوبي يجمع بين التقنيات العلمية الحديثة والاستماع المتفهم،
                 لمساعدتك على اكتشاف قدراتك وتحقيق التغيير الإيجابي المستدام.
               </p>
               <Link to="/about">
@@ -197,7 +197,7 @@ const Home = () => {
       </section>
 
       {/* الخدمات */}
-      <section className="py-20 px-4 bg-gradient-to-b from-secondary/20 to-background">
+      <section className="py-20 px-4 bg-background">
         <div className="container mx-auto">
           <motion.div
             initial="hidden"
@@ -227,8 +227,8 @@ const Home = () => {
                 <TrendingUp className="w-12 h-12 text-primary mb-4" />
                 <h3 className="text-2xl font-semibold mb-4">استشارات تطويرية</h3>
                 <p className="text-muted-foreground mb-6">
-                  تركّز على النمو الشخصي، الوعي الذاتي، تطوير القيادة، 
-                  وبناء الثقة بالنفس. مثالية لمن يسعون إلى تحقيق أهدافهم 
+                  تركّز على النمو الشخصي، الوعي الذاتي، تطوير القيادة،
+                  وبناء الثقة بالنفس. مثالية لمن يسعون إلى تحقيق أهدافهم
                   واكتشاف إمكاناتهم.
                 </p>
                 <ul className="space-y-2 text-muted-foreground mb-6">
@@ -251,7 +251,7 @@ const Home = () => {
                 <Heart className="w-12 h-12 text-primary mb-4" />
                 <h3 className="text-2xl font-semibold mb-4">استشارات علاجية</h3>
                 <p className="text-muted-foreground mb-6">
-                  جلسات مخصصة للشفاء العاطفي، واستعادة التوازن الداخلي، 
+                  جلسات مخصصة للشفاء العاطفي، واستعادة التوازن الداخلي،
                   والتعامل مع الضغوط والتحديات الحياتية بمرونة وسلام.
                 </p>
                 <ul className="space-y-2 text-muted-foreground mb-6">
@@ -294,14 +294,14 @@ const Home = () => {
                 viewport={{ once: true }}
                 variants={fadeIn}
                 transition={{ duration: 0.6, delay: index * 0.2 }}
-                className="text-center"
+                className="text-center "
               >
                 <div className="mb-6 relative">
                   <div className="w-20 h-20 bg-gradient-primary rounded-full flex items-center justify-center mx-auto shadow-elegant">
                     <step.icon className="w-10 h-10 text-primary" />
                   </div>
                   {index < processSteps.length - 1 && (
-                    <div className="hidden md:block absolute top-10 left-[60%] w-[80%] h-0.5 bg-border" />
+                    <div className="hidden md:block absolute top-10 left-[-40%] -z-10 w-[70%] h-0.5 bg-border" />
                   )}
                 </div>
                 <h3 className="text-xl font-semibold mb-2">{step.title}</h3>
@@ -328,7 +328,7 @@ const Home = () => {
       </section>
 
       {/* آراء العملاء */}
-      <section className="py-20 px-4 bg-gradient-to-b from-secondary/20 to-background">
+      <section className="py-20 px-4 bg-background">
         <div className="container mx-auto">
           <motion.div
             initial="hidden"
