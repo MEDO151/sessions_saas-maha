@@ -1,7 +1,8 @@
-import { motion } from 'framer-motion';
-import { Card } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { Calendar, Clock, ArrowRight } from 'lucide-react';
+import { motion } from "framer-motion";
+import { Card } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Calendar, Clock, ArrowRight } from "lucide-react";
+import mainImg from "../assets/hero.jpg";
 
 const Blog = () => {
   const fadeIn = {
@@ -12,67 +13,79 @@ const Blog = () => {
   const blogPosts = [
     {
       id: 1,
-      title: 'قوة التعاطف مع الذات في التطور الشخصي',
-      excerpt: 'اكتشف كيف يمكن للّطف مع نفسك أن يسرّع رحلتك نحو الشفاء والتحول الإيجابي.',
-      category: 'النمو',
-      date: '15 أبريل 2025',
-      readTime: 'قراءة لمدة 5 دقائق',
-      image: 'gradient-primary',
+      title: "قوة التعاطف مع الذات في التطور الشخصي",
+      excerpt:
+        "اكتشف كيف يمكن للّطف مع نفسك أن يسرّع رحلتك نحو الشفاء والتحول الإيجابي.",
+      category: "النمو",
+      date: "15 أبريل 2025",
+      readTime: "قراءة لمدة 5 دقائق",
+      image: "gradient-primary",
     },
     {
       id: 2,
-      title: 'فهم صوتك الداخلي',
-      excerpt: 'تعلم التمييز بين ذاتك الحقيقية وصوت الشك الذي يعيق تقدمك.',
-      category: 'اكتشاف الذات',
-      date: '10 أبريل 2025',
-      readTime: 'قراءة لمدة 7 دقائق',
-      image: 'gradient-primary',
+      title: "فهم صوتك الداخلي",
+      excerpt: "تعلم التمييز بين ذاتك الحقيقية وصوت الشك الذي يعيق تقدمك.",
+      category: "اكتشاف الذات",
+      date: "10 أبريل 2025",
+      readTime: "قراءة لمدة 7 دقائق",
+      image: "gradient-primary",
     },
     {
       id: 3,
-      title: 'بناء المرونة العاطفية',
-      excerpt: 'استراتيجيات عملية لتطوير القوة الداخلية لمواجهة تحديات الحياة برقي وثبات.',
-      category: 'الرفاهية',
-      date: '5 أبريل 2025',
-      readTime: 'قراءة لمدة 6 دقائق',
-      image: 'gradient-primary',
+      title: "بناء المرونة العاطفية",
+      excerpt:
+        "استراتيجيات عملية لتطوير القوة الداخلية لمواجهة تحديات الحياة برقي وثبات.",
+      category: "الرفاهية",
+      date: "5 أبريل 2025",
+      readTime: "قراءة لمدة 6 دقائق",
+      image: "gradient-primary",
     },
     {
       id: 4,
-      title: 'الرحلة من الألم إلى الهدف',
-      excerpt: 'كيف نحوّل التجارب الصعبة إلى مصدر للحكمة والقوة الشخصية.',
-      category: 'الشفاء',
-      date: '28 مارس 2025',
-      readTime: 'قراءة لمدة 8 دقائق',
-      image: 'gradient-primary',
+      title: "الرحلة من الألم إلى الهدف",
+      excerpt: "كيف نحوّل التجارب الصعبة إلى مصدر للحكمة والقوة الشخصية.",
+      category: "الشفاء",
+      date: "28 مارس 2025",
+      readTime: "قراءة لمدة 8 دقائق",
+      image: "gradient-primary",
     },
     {
       id: 5,
-      title: 'وضع الحدود بحب',
-      excerpt: 'إن إنشاء حدود صحية لا يعني القسوة، بل هو فن احترام الذات.',
-      category: 'النمو',
-      date: '20 مارس 2025',
-      readTime: 'قراءة لمدة 5 دقائق',
-      image: 'gradient-primary',
+      title: "وضع الحدود بحب",
+      excerpt: "إن إنشاء حدود صحية لا يعني القسوة، بل هو فن احترام الذات.",
+      category: "النمو",
+      date: "20 مارس 2025",
+      readTime: "قراءة لمدة 5 دقائق",
+      image: "gradient-primary",
     },
     {
       id: 6,
-      title: 'ممارسات اليقظة في الحياة اليومية',
-      excerpt: 'تقنيات بسيطة وفعالة لجلب مزيد من الوعي والسلام إلى روتينك اليومي.',
-      category: 'الرفاهية',
-      date: '15 مارس 2025',
-      readTime: 'قراءة لمدة 6 دقائق',
-      image: 'gradient-primary',
+      title: "ممارسات اليقظة في الحياة اليومية",
+      excerpt:
+        "تقنيات بسيطة وفعالة لجلب مزيد من الوعي والسلام إلى روتينك اليومي.",
+      category: "الرفاهية",
+      date: "15 مارس 2025",
+      readTime: "قراءة لمدة 6 دقائق",
+      image: "gradient-primary",
     },
   ];
 
-  const categories = ['الكل', 'الشفاء', 'النمو', 'الرفاهية', 'اكتشاف الذات'];
+  const categories = ["الكل", "الشفاء", "النمو", "الرفاهية", "اكتشاف الذات"];
 
   return (
-    <div className="min-h-screen pt-20">
-
+    <div className="min-h-screen  relative ">
+      <div
+        className="fixed inset-0 -z-10"
+        style={{
+          backgroundImage: `url(${mainImg})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+          opacity: 1,
+        }}
+      />
       {/* قسم البداية */}
-      <section className="pt-32 pb-20 px-4 bg-gradient-to-b from-secondary/30 to-background">
+      <section className="pt-52 pb-20 px-4 from-secondary/30 to-background">
         <div className="container mx-auto max-w-4xl">
           <motion.div
             initial="hidden"
@@ -81,24 +94,25 @@ const Blog = () => {
             transition={{ duration: 0.8 }}
             className="text-center space-y-6"
           >
-            <h1 className="text-5xl md:text-6xl font-bold leading-tight">
-              رؤى و<span className="text-primary">إلهام</span>
+            <h1 className="text-5xl md:text-6xl text-white font-bold leading-tight">
+              رؤى و<span className="text-accent">إلهام</span>
             </h1>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              استكشف مقالات حول الشفاء والنمو والرفاهية واكتشاف الذات لدعم رحلتك نحو التحول الإيجابي.
+            <p className="text-xl text-muted max-w-2xl mx-auto">
+              استكشف مقالات حول الشفاء والنمو والرفاهية واكتشاف الذات لدعم رحلتك
+              نحو التحول الإيجابي.
             </p>
           </motion.div>
         </div>
       </section>
 
       {/* الفئات */}
-      <section className="py-8 px-4">
+      <section className="py-8 px-4 bg-white">
         <div className="container mx-auto max-w-6xl">
           <div className="flex flex-wrap gap-3 justify-center">
             {categories.map((category) => (
               <Button
                 key={category}
-                variant={category === 'الكل' ? 'default' : 'outline'}
+                variant={category === "الكل" ? "default" : "outline"}
                 size="sm"
               >
                 {category}
@@ -109,7 +123,7 @@ const Blog = () => {
       </section>
 
       {/* شبكة المقالات */}
-      <section className="py-12 px-4 pb-20">
+      <section className="py-12 px-4 pb-20 bg-white">
         <div className="container mx-auto max-w-6xl">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {blogPosts.map((post, index) => (
@@ -133,15 +147,15 @@ const Blog = () => {
                         <span>{post.readTime}</span>
                       </div>
                     </div>
-                    
+
                     <h3 className="text-xl font-bold leading-tight line-clamp-2">
-                      {post.title.split(' ').slice(0, 4).join(' ')+'...'}
+                      {post.title.split(" ").slice(0, 4).join(" ") + "..."}
                     </h3>
-                    
+
                     <p className="text-muted-foreground line-clamp-3">
                       {post.excerpt}
                     </p>
-                    
+
                     <div className="flex items-center justify-between pt-4 border-t border-border">
                       <div className="flex items-center space-x-2 text-sm text-muted-foreground">
                         <Calendar className="w-4 h-4" />
@@ -161,7 +175,7 @@ const Blog = () => {
       </section>
 
       {/* قسم النشرة البريدية */}
-      <section className="py-20 px-4 bg-gradient-to-b from-secondary/20 to-background">
+      <section className="py-20 px-4 from-secondary/20 to-background">
         <div className="container mx-auto max-w-4xl">
           <motion.div
             initial="hidden"
@@ -175,7 +189,8 @@ const Blog = () => {
                 ابقَ مُلهمًا
               </h2>
               <p className="text-muted-foreground text-lg mb-8 max-w-2xl mx-auto">
-                اشترك لتصلك أحدث المقالات والنصائح والإلهامات مباشرة إلى بريدك الإلكتروني.
+                اشترك لتصلك أحدث المقالات والنصائح والإلهامات مباشرة إلى بريدك
+                الإلكتروني.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
                 <input

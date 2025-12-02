@@ -87,12 +87,12 @@ const Home = () => {
           transition={{ duration: 0.8 }}
           className="relative z-10 max-w-4xl mx-auto text-center space-y-8"
         >
-          <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight">
+          <h1 className="text-4xl md:text-5xl text-white lg:text-6xl font-bold leading-tight">
             اكتشف أفضل نسخة من{' '}
-            <span className="text-primary">نفسك</span>
+            <span className="text-accent">نفسك</span>
           </h1>
 
-          <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-xl md:text-2xl text-muted max-w-2xl mx-auto">
             استشفاء، تطوير، رفاهية، واستكشاف للكينونة من خلال جلسات تدريبية مخصصة
           </p>
 
@@ -155,7 +155,7 @@ const Home = () => {
       {/* نبذة تعريفية */}
       <section className="py-20 px-4">
         <div className="container mx-auto">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
+          <div className="gap-12 mx-auto text-center w-[60%]">
             <motion.div
               initial="hidden"
               whileInView="visible"
@@ -163,34 +163,23 @@ const Home = () => {
               variants={fadeIn}
               transition={{ duration: 0.6 }}
             >
-              <h2 className="text-4xl md:text-5xl font-bold mb-6">
-                تعرّف على <span className="text-primary">مدربتك</span>
+              <h2 className="text-4xl text-white md:text-5xl font-bold mb-6">
+                تعرّف على <span className="text-accent">مدربتك</span>
               </h2>
-              <p className="text-muted-foreground text-lg mb-6">
+              <p className="text-muted text-lg mb-6">
                 أنا مها الضافر، مدربة حياة معتمدة، أساعد الأفراد على خوض رحلات تحويلية
                 نحو اكتشاف الذات والنمو المستمر. أقدّم استشارات تطويرية وعلاجية
                 في بيئة آمنة وداعمة للشفاء والتمكين.
               </p>
-              <p className="text-muted-foreground text-lg mb-8">
+              <p className="text-muted text-lg mb-8">
                 أسلوبي يجمع بين التقنيات العلمية الحديثة والاستماع المتفهم،
                 لمساعدتك على اكتشاف قدراتك وتحقيق التغيير الإيجابي المستدام.
               </p>
               <Link to="/about">
-                <Button variant="default" size="lg">
+                <Button variant="gold" size="lg">
                   اقرأ قصتي
                 </Button>
               </Link>
-            </motion.div>
-
-            <motion.div
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              variants={fadeIn}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="relative"
-            >
-              <div className="aspect-square rounded-3xl bg-gradient-primary shadow-elegant" />
             </motion.div>
           </div>
         </div>
@@ -277,10 +266,10 @@ const Home = () => {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">
+            <h2 className="text-4xl text-white md:text-5xl font-bold mb-4">
               خطوات العمل
             </h2>
-            <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+            <p className="text-muted text-lg max-w-2xl mx-auto">
               ابدأ رحلتك نحو التغيير بثلاث خطوات بسيطة
             </p>
           </motion.div>
@@ -294,18 +283,18 @@ const Home = () => {
                 viewport={{ once: true }}
                 variants={fadeIn}
                 transition={{ duration: 0.6, delay: index * 0.2 }}
-                className="text-center "
+                className="text-center"
               >
                 <div className="mb-6 relative">
-                  <div className="w-20 h-20 bg-gradient-primary rounded-full flex items-center justify-center mx-auto shadow-elegant">
+                  <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center mx-auto shadow-elegant">
                     <step.icon className="w-10 h-10 text-primary" />
                   </div>
                   {index < processSteps.length - 1 && (
-                    <div className="hidden md:block absolute top-10 left-[-40%] -z-10 w-[70%] h-0.5 bg-border" />
+                    <div className="hidden md:block absolute top-10 left-[-40%] -z-10 w-[70%] h-0.5 bg-white" />
                   )}
                 </div>
-                <h3 className="text-xl font-semibold mb-2">{step.title}</h3>
-                <p className="text-muted-foreground">{step.description}</p>
+                <h3 className="text-xl text-white font-semibold mb-2">{step.title}</h3>
+                <p className="text-muted">{step.description}</p>
               </motion.div>
             ))}
           </div>

@@ -53,7 +53,6 @@ const AdminLayout: React.FC = () => {
     { path: "/admin/users", icon: UsersIcon, label: "المستخدمون" },
     { path: "/admin/bookings", icon: Calendar, label: "الحجوزات" },
     { path: "/admin/services", icon: Briefcase, label: "الخدمات" },
-    // { path: "/admin/calendar", icon: Calendar, label: "التقويم" },
     { path: "/admin/settings", icon: Settings, label: "الإعدادات" },
     { path: "/admin/logs", icon: FileText, label: "السجلات" },
   ];
@@ -89,9 +88,9 @@ const AdminLayout: React.FC = () => {
           <><div className="w-8 h-8 rounded-md bg-primary/10 flex items-center justify-center">
               <LayoutDashboard className="w-5 h-5 text-primary" />
             </div>
-          <div className={`${labelBase} ${collapsed ? labelHidden : labelVisible} text-lg font-semibold text-primary`}>
+          <Link to={`/`} className={`${labelBase} ${collapsed ? labelHidden : labelVisible} text-lg font-semibold text-primary`} >
             Maha Aldafer
-          </div></>
+          </Link></>
           }
 
           <div className="flex items-center gap-2">

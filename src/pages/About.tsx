@@ -3,7 +3,7 @@ import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 import { Award, BookOpen, Heart, Target } from 'lucide-react';
-
+import mainImg from '../assets/hero.jpg'
 const About = () => {
   const fadeIn = {
     hidden: { opacity: 0, y: 20 },
@@ -57,10 +57,21 @@ const About = () => {
   ];
 
   return (
-    <div className="min-h-screen pt-20">
+    <div className="min-h-screen relative">
+
+    <div
+        className="fixed inset-0 -z-10"
+        style={{
+          backgroundImage: `url(${mainImg})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+          opacity: 1,
+        }}
+      />
 
       {/* قسم البداية */}
-      <section className="pt-32 pb-20 px-4 bg-gradient-to-b from-secondary/30 to-background">
+      <section className="pt-[12rem] pb-20 px-4 from-secondary/30 to-background">
         <div className="container mx-auto max-w-4xl">
           <motion.div
             initial="hidden"
@@ -69,13 +80,13 @@ const About = () => {
             transition={{ duration: 0.8 }}
             className="text-center space-y-6"
           >
-            <h1 className="text-5xl md:text-6xl font-bold leading-tight">
+            <h1 className="text-5xl md:text-6xl text-white font-bold leading-tight">
               مها الضافر
             </h1>
-            <p className="text-2xl md:text-3xl text-primary">
+            <p className="text-2xl md:text-3xl text-accent">
               مرشدة للنمو الإنساني والتوازن الداخلي
             </p>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-xl text-muted max-w-2xl mx-auto">
               مدربة حياة معتمدة، أساعد الأفراد على اكتشاف ذواتهم الحقيقية وتحقيق التحول الإيجابي
               من خلال الشفاء والنمو والرفاهية الشاملة.
             </p>
@@ -84,7 +95,7 @@ const About = () => {
       </section>
 
       {/* قسم القصة */}
-      <section className="py-20 px-4">
+      <section className="py-20 px-4 bg-white">
         <div className="container mx-auto max-w-4xl">
           <motion.div
             initial="hidden"
@@ -92,7 +103,7 @@ const About = () => {
             viewport={{ once: true }}
             variants={fadeIn}
             transition={{ duration: 0.6 }}
-            className="space-y-6 text-lg text-muted-foreground"
+            className="space-y-6 text-xl text-primary"
           >
             <p>
               بدأت رحلتي في التدريب الحياتي من إدراك بسيط وعميق في الوقت نفسه:
@@ -122,7 +133,7 @@ const About = () => {
       </section>
 
       {/* قسم الأدوار */}
-      <section className="py-20 px-4 bg-gradient-to-b from-secondary/20 to-background">
+      <section className="py-20 px-4  from-secondary/20 to-background">
         <div className="container mx-auto">
           <motion.div
             initial="hidden"
@@ -132,8 +143,8 @@ const About = () => {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">الأدوار التي أقدمها</h2>
-            <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+            <h2 className="text-4xl md:text-5xl text-white font-bold mb-4">الأدوار التي أقدمها</h2>
+            <p className="text-muted text-lg max-w-2xl mx-auto">
               أخدمك من خلال أدوار متعددة تجمع بين الدعم والإرشاد والتمكين
             </p>
           </motion.div>
@@ -160,7 +171,7 @@ const About = () => {
       </section>
 
       {/* المؤهلات والخبرة */}
-      <section className="py-20 px-4">
+      <section className="py-20 px-4 bg-white">
         <div className="container mx-auto max-w-4xl">
           <motion.div
             initial="hidden"
@@ -195,7 +206,7 @@ const About = () => {
       </section>
 
       {/* منهجية التدريب */}
-      <section className="py-20 px-4 bg-gradient-to-b from-secondary/20 to-background">
+      <section className="py-20 px-4 from-secondary/20 to-background">
         <div className="container mx-auto">
           <motion.div
             initial="hidden"
@@ -205,8 +216,8 @@ const About = () => {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">منهجية التدريب</h2>
-            <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+            <h2 className="text-4xl md:text-5xl text-white font-bold mb-4">منهجية التدريب</h2>
+            <p className="text-muted text-lg max-w-2xl mx-auto">
               عملية من أربع مراحل مصممة لدعم رحلتك الخاصة نحو التحول
             </p>
           </motion.div>
@@ -221,8 +232,8 @@ const About = () => {
                 variants={fadeIn}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
               >
-                <Card className="p-6 h-full hover:shadow-elegant transition-shadow duration-300">
-                  <div className="w-12 h-12 bg-gradient-primary rounded-full flex items-center justify-center text-white font-bold text-xl mb-4">
+                <Card className="p-6 h-full  hover:shadow-elegant transition-shadow duration-300">
+                  <div className="w-12 h-12 rounded-full flex items-center justify-center text-white bg-accent font-bold text-xl mb-4">
                     {index + 1}
                   </div>
                   <h3 className="text-xl font-semibold mb-3">{step.title}</h3>
@@ -235,7 +246,7 @@ const About = () => {
       </section>
 
       {/* قسم الحجز */}
-      <section className="py-20 px-4">
+      <section className="py-20 px-4 bg-white">
         <div className="container mx-auto max-w-4xl">
           <motion.div
             initial="hidden"

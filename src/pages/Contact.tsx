@@ -7,6 +7,7 @@ import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { Mail, Phone, Instagram, Linkedin, MessageSquare, Video } from 'lucide-react';
 import { toast } from 'sonner';
+import mainImg from '../assets/hero.jpg'
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -58,10 +59,20 @@ const Contact = () => {
   ];
 
   return (
-    <div className="min-h-screen pt-20">
+    <div className="min-h-screen ">
+      <div
+        className="fixed inset-0 -z-10"
+        style={{
+          backgroundImage: `url(${mainImg})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+          opacity: 1,
+        }}
+      />
 
       {/* قسم البداية */}
-      <section className="pt-32 pb-20 px-4 bg-gradient-to-b from-secondary/30 to-background">
+      <section className="pt-52 pb-20 px-4 from-secondary/30 to-background">
         <div className="container mx-auto max-w-4xl">
           <motion.div
             initial="hidden"
@@ -70,10 +81,10 @@ const Contact = () => {
             transition={{ duration: 0.8 }}
             className="text-center space-y-6"
           >
-            <h1 className="text-5xl md:text-6xl font-bold leading-tight">
-              تواصل <span className="text-primary">معي</span>
+            <h1 className="text-5xl md:text-6xl text-white font-bold leading-tight">
+              تواصل <span className="text-accent">معي</span>
             </h1>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-xl text-muted max-w-2xl mx-auto">
               هل لديك أسئلة أو ترغب بمعرفة المزيد؟ أنا هنا لمساعدتك في رحلتك نحو النمو والرفاهية.
             </p>
           </motion.div>
@@ -81,7 +92,7 @@ const Contact = () => {
       </section>
 
       {/* ملاحظة الجلسات */}
-      <section className="py-8 px-4">
+      <section className="py-8 px-4 bg-white">
         <div className="container mx-auto max-w-4xl">
           <Card className="p-6 bg-primary/5 border-primary/20">
             <div className="flex items-start space-x-3">
@@ -98,7 +109,7 @@ const Contact = () => {
       </section>
 
       {/* نموذج التواصل */}
-      <section className="py-12 px-4 pb-20">
+      <section className="py-12 px-4 pb-20 bg-white">
         <div className="container mx-auto max-w-6xl">
           <div className="grid lg:grid-cols-2 gap-12">
             

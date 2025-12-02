@@ -41,7 +41,7 @@ const Navbar = ({ user: initialUser = null, onLogout = () => {} }) => {
     if (!initialUser) {
       // comment out if you don't want demo user
       setUser({
-        name: 'مها الضافر',
+        name: 'مها ال - ضافر',
         email: 'maha@example.com',
         avatar: null, // you can replace with image url
       });
@@ -79,8 +79,8 @@ const Navbar = ({ user: initialUser = null, onLogout = () => {} }) => {
 
           {/* الشعار */}
           <Link to="/" className="flex items-center space-x-2 rtl:space-x-reverse">
-            <div className="text-2xl font-bold text-primary">
-              مهـا الضـافر
+            <div className={`text-2xl font-bold ${isScrolled ? 'text-primary' : 'text-white'}`}>
+              مهـا ال - ضـافر
             </div>
           </Link>
 
@@ -91,8 +91,8 @@ const Navbar = ({ user: initialUser = null, onLogout = () => {} }) => {
                 <Link
                   key={link.path}
                   to={link.path}
-                  className={`text-sm font-medium transition-colors hover:text-primary ${
-                    location.pathname === link.path ? 'text-primary' : 'text-foreground/80'
+                  className={`text-sm font-bold transition-colors ${isScrolled ? 'hover:text-primary/50' : 'hover:text-white/50'}  ${
+                    location.pathname === link.path ?  isScrolled ? 'text-primary' : 'text-white' : isScrolled ? 'text-primary' : 'text-white'
                   }`}
                 >
                   {link.name}
@@ -110,14 +110,14 @@ const Navbar = ({ user: initialUser = null, onLogout = () => {} }) => {
                   className="flex items-center gap-3 px-3 py-1 rounded-lg border border-transparent hover:shadow-sm transition"
                 >
                   {/* avatar simple */}
-                  <div className="w-9 h-9 rounded-full bg-primary/10 flex items-center justify-center text-primary font-semibold">
+                  <div className={`w-9 h-9 rounded-full ${isScrolled ? 'bg-primary/10' : "bg-white text-primary" }  flex items-center justify-center text-primary font-semibold`}>
                     {user.avatar ? (
-                      <img src={user.avatar} alt={user.name} className="w-full h-full object-cover rounded-full" />
+                      <img src={user.avatar} alt={user.name} className="w-full h-full object-cover text-primary rounded-full" />
                     ) : (
                       user.name?.split(' ').map(n => n[0]).slice(0,2).join('')
                     )}
                   </div>
-                  <div className="text-sm text-foreground/90">{user.name}</div>
+                  <div className={`text-sm font-bold  ${isScrolled ? ' text-foreground/90' : ' text-white'} text-foreground/90`}>{user.name}</div>
                 </button>
 
                 <AnimatePresence>
@@ -127,13 +127,13 @@ const Navbar = ({ user: initialUser = null, onLogout = () => {} }) => {
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: -6 }}
                       transition={{ duration: 0.16 }}
-                      className="absolute right-0 mt-3 w-56 rounded-lg bg-card shadow-lg border border-border z-50 overflow-hidden"
+                      className="absolute -right-[65px] mt-3 w-56 rounded-lg bg-card shadow-lg border border-border z-50 overflow-hidden"
                       role="menu"
                     >
                       <div className="py-2">
                         {/* user header */}
                         <div className="px-4 py-2 border-b border-border">
-                          <div className="text-sm font-semibold">{user.name}</div>
+                          <div className="text-sm font-semibold text-primary">{user.name}</div>
                           <div className="text-xs text-foreground/60">{user.email}</div>
                         </div>
 
@@ -177,7 +177,7 @@ const Navbar = ({ user: initialUser = null, onLogout = () => {} }) => {
 
           {/* زر القائمة للجوال */}
           <button
-            className="md:hidden text-foreground"
+            className="md:hidden text-primary"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label="فتح القائمة"
           >
@@ -221,7 +221,7 @@ const Navbar = ({ user: initialUser = null, onLogout = () => {} }) => {
                       )}
                     </div>
                     <div>
-                      <div className="text-sm font-semibold">{user.name}</div>
+                      <div className="text-sm text-primary font-semibold">{user.name}</div>
                       <div className="text-xs text-foreground/60">{user.email}</div>
                     </div>
                   </div>
