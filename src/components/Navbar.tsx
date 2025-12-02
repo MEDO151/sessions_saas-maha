@@ -41,7 +41,7 @@ const Navbar = ({ user: initialUser = null, onLogout = () => {} }) => {
     if (!initialUser) {
       // comment out if you don't want demo user
       setUser({
-        name: 'مها ال - ضافر',
+        name: 'مها آل - ضافر',
         email: 'maha@example.com',
         avatar: null, // you can replace with image url
       });
@@ -80,7 +80,7 @@ const Navbar = ({ user: initialUser = null, onLogout = () => {} }) => {
           {/* الشعار */}
           <Link to="/" className="flex items-center space-x-2 rtl:space-x-reverse">
             <div className={`text-2xl font-bold ${isScrolled ? 'text-primary' : 'text-white'}`}>
-              مهـا ال - ضـافر
+              مهـا آل - ضـافر
             </div>
           </Link>
 

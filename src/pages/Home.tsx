@@ -141,8 +141,8 @@ const Home = () => {
                 variants={fadeIn}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
               >
-                <Card className="p-6 h-full hover:shadow-elegant transition-shadow duration-300">
-                  <value.icon className="w-12 h-12 text-primary mb-4" />
+                <Card className="p-6 h-full hover:shadow-elegant transition-shadow duration-300 flex flex-col items-center justify-center text-center">
+                  <value.icon className="w-12 h-12 text-accent mb-4" />
                   <h3 className="text-xl font-semibold mb-2">{value.title}</h3>
                   <p className="text-muted-foreground">{value.description}</p>
                 </Card>
@@ -167,7 +167,7 @@ const Home = () => {
                 تعرّف على <span className="text-accent">مدربتك</span>
               </h2>
               <p className="text-muted text-lg mb-6">
-                أنا مها الضافر، مدربة حياة معتمدة، أساعد الأفراد على خوض رحلات تحويلية
+                أنا مها آل ضافر
                 نحو اكتشاف الذات والنمو المستمر. أقدّم استشارات تطويرية وعلاجية
                 في بيئة آمنة وداعمة للشفاء والتمكين.
               </p>
@@ -213,7 +213,7 @@ const Home = () => {
               transition={{ duration: 0.6 }}
             >
               <Card className="p-8 h-full hover:shadow-elegant transition-shadow duration-300">
-                <TrendingUp className="w-12 h-12 text-primary mb-4" />
+                <TrendingUp className="w-12 h-12 text-accent mb-4" />
                 <h3 className="text-2xl font-semibold mb-4">استشارات تطويرية</h3>
                 <p className="text-muted-foreground mb-6">
                   تركّز على النمو الشخصي، الوعي الذاتي، تطوير القيادة،
@@ -237,7 +237,7 @@ const Home = () => {
               transition={{ duration: 0.6, delay: 0.2 }}
             >
               <Card className="p-8 h-full hover:shadow-elegant transition-shadow duration-300">
-                <Heart className="w-12 h-12 text-primary mb-4" />
+                <Heart className="w-12 h-12 text-accent mb-4" />
                 <h3 className="text-2xl font-semibold mb-4">استشارات علاجية</h3>
                 <p className="text-muted-foreground mb-6">
                   جلسات مخصصة للشفاء العاطفي، واستعادة التوازن الداخلي،

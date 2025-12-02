@@ -81,7 +81,7 @@ const About = () => {
             className="text-center space-y-6"
           >
             <h1 className="text-5xl md:text-6xl text-white font-bold leading-tight">
-              مها الضافر
+              مها آل ضافر
             </h1>
             <p className="text-2xl md:text-3xl text-accent">
               مرشدة للنمو الإنساني والتوازن الداخلي
@@ -195,7 +195,7 @@ const About = () => {
               <div className="grid md:grid-cols-2 gap-6">
                 {credentials.map((credential, index) => (
                   <div key={index} className="flex items-start space-x-3">
-                    <Award className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
+                    <Award className="w-6 h-6 text-accent flex-shrink-0 mt-1" />
                     <span className="text-muted-foreground">{credential}</span>
                   </div>
                 ))}
