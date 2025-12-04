@@ -1,4 +1,7 @@
 import { Link } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { RootState } from "@/store/store";
+import { setSelectedCategory } from "@/store/blogSlice";
 import { motion } from "framer-motion";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -7,12 +10,22 @@ import mainImg from "../assets/hero.jpg";
 import { blogPosts } from "@/data/blogPosts";
 
 const Blog = () => {
+  const dispatch = useDispatch();
+  const selectedCategory = useSelector(
+    (state: RootState) => state.blog.selectedCategory
+  );
+
   const fadeIn = {
     hidden: { opacity: 0, y: 20 },
     visible: { opacity: 1, y: 0 },
   };
 
   const categories = ["الكل", "الشفاء", "النمو", "الرفاهية", "اكتشاف الذات"];
+
+  const filteredPosts =
+    selectedCategory === "الكل"
+      ? blogPosts
+      : blogPosts.filter((post) => post.category === selectedCategory);
 
   return (
     <div className="min-h-screen">
@@ -54,8 +67,9 @@ const Blog = () => {
             {categories.map((category) => (
               <Button
                 key={category}
-                variant={category === "الكل" ? "default" : "outline"}
+                variant={selectedCategory === category ? "default" : "outline"}
                 size="sm"
+                onClick={() => dispatch(setSelectedCategory(category))}
               >
                 {category}
               </Button>
@@ -68,7 +82,7 @@ const Blog = () => {
       <section className="py-12 px-4 pb-20 bg-white">
         <div className="container mx-auto max-w-6xl">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {blogPosts.map((post, index) => (
+            {filteredPosts.map((post, index) => (
               <motion.div
                 key={post.id}
                 initial="hidden"
