@@ -1,10 +1,19 @@
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "@/store/store";
-import { setSelectedCategory } from "@/store/blogSlice";
+import { setSelectedCategory, setCurrentPage } from "@/store/blogSlice";
 import { motion } from "framer-motion";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import {
+  Pagination,
+  PaginationContent,
+  PaginationEllipsis,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
+} from "@/components/ui/pagination";
 import { Calendar, Clock, ArrowRight } from "lucide-react";
 import mainImg from "../assets/hero.jpg";
 import { blogPosts } from "@/data/blogPosts";
@@ -13,6 +22,10 @@ const Blog = () => {
   const dispatch = useDispatch();
   const selectedCategory = useSelector(
     (state: RootState) => state.blog.selectedCategory
+  );
+  const currentPage = useSelector((state: RootState) => state.blog.currentPage);
+  const postsPerPage = useSelector(
+    (state: RootState) => state.blog.postsPerPage
   );
 
   const fadeIn = {
@@ -26,6 +39,17 @@ const Blog = () => {
     selectedCategory === "الكل"
       ? blogPosts
       : blogPosts.filter((post) => post.category === selectedCategory);
+
+  // Pagination logic
+  const totalPages = Math.ceil(filteredPosts.length / postsPerPage);
+  const indexOfLastPost = currentPage * postsPerPage;
+  const indexOfFirstPost = indexOfLastPost - postsPerPage;
+  const currentPosts = filteredPosts.slice(indexOfFirstPost, indexOfLastPost);
+
+  const handlePageChange = (page: number) => {
+    dispatch(setCurrentPage(page));
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
 
   return (
     <div className="min-h-screen">
@@ -82,7 +106,7 @@ const Blog = () => {
       <section className="py-12 px-4 pb-20 bg-white">
         <div className="container mx-auto max-w-6xl">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {filteredPosts.map((post, index) => (
+            {currentPosts.map((post, index) => (
               <motion.div
                 key={post.id}
                 initial="hidden"
@@ -142,6 +166,76 @@ const Blog = () => {
           </div>
         </div>
       </section>
+
+      {/* Pagination */}
+      {totalPages > 1 && (
+        <section className="py-8 px-4 bg-white">
+          <div className="container mx-auto max-w-6xl flex justify-center">
+            <Pagination>
+              <PaginationContent>
+                <PaginationItem>
+                  <PaginationPrevious
+                    onClick={() =>
+                      currentPage > 1 && handlePageChange(currentPage - 1)
+                    }
+                    className={
+                      currentPage === 1
+                        ? "pointer-events-none opacity-50"
+                        : "cursor-pointer"
+                    }
+                  />
+                </PaginationItem>
+
+                {[...Array(totalPages)].map((_, index) => {
+                  const pageNumber = index + 1;
+                  if (
+                    pageNumber === 1 ||
+                    pageNumber === totalPages ||
+                    (pageNumber >= currentPage - 1 &&
+                      pageNumber <= currentPage + 1)
+                  ) {
+                    return (
+                      <PaginationItem key={pageNumber}>
+                        <PaginationLink
+                          onClick={() => handlePageChange(pageNumber)}
+                          isActive={currentPage === pageNumber}
+                          className="cursor-pointer"
+                        >
+                          {pageNumber}
+                        </PaginationLink>
+                      </PaginationItem>
+                    );
+                  } else if (
+                    pageNumber === currentPage - 2 ||
+                    pageNumber === currentPage + 2
+                  ) {
+                    return (
+                      <PaginationItem key={pageNumber}>
+                        <PaginationEllipsis />
+                      </PaginationItem>
+                    );
+                  }
+                  return null;
+                })}
+
+                <PaginationItem>
+                  <PaginationNext
+                    onClick={() =>
+                      currentPage < totalPages &&
+                      handlePageChange(currentPage + 1)
+                    }
+                    className={
+                      currentPage === totalPages
+                        ? "pointer-events-none opacity-50"
+                        : "cursor-pointer"
+                    }
+                  />
+                </PaginationItem>
+              </PaginationContent>
+            </Pagination>
+          </div>
+        </section>
+      )}
 
       {/* قسم النشرة البريدية */}
       <section className="py-20 px-4 from-secondary/20 to-background">
