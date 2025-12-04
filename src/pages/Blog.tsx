@@ -73,7 +73,7 @@ const Blog = () => {
   const categories = ["الكل", "الشفاء", "النمو", "الرفاهية", "اكتشاف الذات"];
 
   return (
-    <div className="min-h-screen  relative ">
+    <div className="min-h-screen">
       <div
         className="fixed inset-0 -z-10"
         style={{

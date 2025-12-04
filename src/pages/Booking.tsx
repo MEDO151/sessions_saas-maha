@@ -9,6 +9,7 @@ import { Checkbox } from '@/components/ui/checkbox';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Video, Calendar, Clock, CheckCircle2 } from 'lucide-react';
 import { toast } from 'sonner';
+import mainImg from "../assets/hero.jpg";
 
 const Booking = () => {
   const [formData, setFormData] = useState({
@@ -51,10 +52,21 @@ const Booking = () => {
   };
 
   return (
-    <div className="min-h-screen pt-20">
+    <div className="min-h-screen">
+
+      <div
+        className="fixed inset-0 -z-10"
+        style={{
+          backgroundImage: `url(${mainImg})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+          opacity: 1,
+        }}
+      />
 
       {/* قسم البداية */}
-      <section className="pt-32 pb-20 px-4 bg-gradient-to-b from-secondary/30 to-background">
+      <section className="pt-52 pb-20 px-4">
         <div className="container mx-auto max-w-4xl">
           <motion.div
             initial="hidden"
@@ -63,10 +75,10 @@ const Booking = () => {
             transition={{ duration: 0.8 }}
             className="text-center space-y-6"
           >
-            <h1 className="text-5xl md:text-6xl font-bold leading-tight">
-              احجز <span className="text-primary">جلستك</span>
+            <h1 className="text-5xl md:text-6xl font-bold text-white leading-tight">
+              احجز <span className="text-accent">جلستك</span>
             </h1>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-xl text-muted max-w-2xl mx-auto">
               اتخذ الخطوة الأولى نحو التحول. احجز جلستك التدريبية الشخصية اليوم.
             </p>
           </motion.div>
@@ -74,7 +86,7 @@ const Booking = () => {
       </section>
 
       {/* المميزات */}
-      <section className="py-12 px-4">
+      <section className="py-12 px-4 bg-background">
         <div className="container mx-auto max-w-5xl">
           <div className="grid md:grid-cols-3 gap-6 mb-12">
             <Card className="p-6 text-center">
@@ -197,15 +209,16 @@ const Booking = () => {
                   />
                 </div>
 
-                <div className="flex items-start space-x-2">
+                <div className="flex items-start gap-2">
                   <Checkbox
                     id="privacy"
                     checked={formData.privacyAccepted}
                     onCheckedChange={(checked) => handleChange('privacyAccepted', checked as boolean)}
+                    
                   />
                   <label
                     htmlFor="privacy"
-                    className="text-sm text-muted-foreground leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                    className="text-sm ml-5 text-muted-foreground leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
                   >
                     أوافق على سياسة الخصوصية وأسمح باستلام تفاصيل الجلسة عبر البريد الإلكتروني *
                   </label>

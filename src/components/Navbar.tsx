@@ -117,7 +117,7 @@ const Navbar = ({ user: initialUser = null, onLogout = () => {} }) => {
                       user.name?.split(' ').map(n => n[0]).slice(0,2).join('')
                     )}
                   </div>
-                  <div className={`text-sm font-bold  ${isScrolled ? ' text-foreground/90' : ' text-white'} text-foreground/90`}>{user.name}</div>
+                  <div className={`text-sm font-bold ${isScrolled ? ' text-primary' : ' text-white'}`}>{user.name}</div>
                 </button>
 
                 <AnimatePresence>
@@ -166,8 +166,7 @@ const Navbar = ({ user: initialUser = null, onLogout = () => {} }) => {
             ) : (
               <Link to="/login">
                 <Button
-                  variant="outline"
-                  className="border-primary text-primary hover:bg-primary/10 transition"
+                  variant="gold"
                 >
                   تسجيل الدخول
                 </Button>

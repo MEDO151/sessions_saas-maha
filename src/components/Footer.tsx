@@ -75,11 +75,11 @@ const Footer = () => {
         {/* الشريط السفلي */}
         <div className="border-t border-border pt-8 text-center text-sm text-muted-foreground">
           <p>&copy; {new Date().getFullYear()} مهـا الضـافر. جميع الحقوق محفوظة.</p>
-          <div className="flex justify-center space-x-4 mt-2">
+          <div className="flex justify-center mt-2">
             <Link to="/privacy" className="hover:text-primary transition-colors">
               سياسة الخصوصية
             </Link>
-            <span>|</span>
+            <span className="mx-2">|</span>
             <Link to="/terms" className="hover:text-primary transition-colors">
               الشروط والأحكام
             </Link>

@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { Mail, Lock, User } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
+import mainImg from "../assets/hero.jpg";
 
 type Mode = "login" | "register";
 
@@ -17,11 +18,17 @@ export default function AuthForms({ initial = "login" }: AuthFormsProps) {
     // use CSS vars defined in your CSS: background/text use hsl(var(--...))
     <div
       className="min-h-screen flex items-center justify-center p-6"
-      style={{
-        backgroundColor: "hsl(var(--background))",
-        color: "hsl(var(--foreground))",
-      }}
     >
+      <div
+        className="fixed inset-0 -z-10"
+        style={{
+          backgroundImage: `url(${mainImg})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+          opacity: 1,
+        }}
+      />
       <motion.div
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
@@ -30,11 +37,7 @@ export default function AuthForms({ initial = "login" }: AuthFormsProps) {
       >
         {/* LEFT: welcome + gradient (uses your --gradient-primary) */}
         <div
-          className="hidden md:flex flex-col md:gap-5 justify-center px-8 rounded-2xl text-white shadow-elegant"
-          style={{
-            background: "var(--gradient-primary)",
-            color: "hsl(var(--primary-foreground))",
-          }}
+          className="hidden md:flex flex-col md:gap-5 justify-center px-8 rounded-2xl bg-white text-primary shadow-elegant"
         >
           <h2 className="text-3xl font-semibold">مرحبا بك</h2>
           <p className="text-sm opacity-90 leading-relaxed">
@@ -45,11 +48,10 @@ export default function AuthForms({ initial = "login" }: AuthFormsProps) {
           <div className="flex items-center gap-3">
             <button
               onClick={() => setMode("login")}
-              className="px-4 py-2 rounded-lg backdrop-blur-sm hover:scale-[1.01] transition"
+              className="px-4 py-2  rounded-lg backdrop-blur-sm hover:scale-[1.01] transition"
               style={{
-                backgroundColor: "hsla(var(--card) / 0.12)", // subtle white overlay
-                border: "1px solid rgba(255,255,255,0.18)",
-                color: "white",
+                border: "1px solid hsl(46, 65%, 52%)",
+                color: "hsl(46, 65%, 52%)",
               }}
             >
               تسجيل الدخول
@@ -59,9 +61,8 @@ export default function AuthForms({ initial = "login" }: AuthFormsProps) {
               onClick={() => setMode("register")}
               className="px-4 py-2 rounded-lg hover:scale-[1.01] transition"
               style={{
-                backgroundColor: "hsla(var(--card) / 0.06)",
-                border: "1px solid rgba(255,255,255,0.12)",
-                color: "white",
+                border: "1px solid hsl(46, 65%, 52%)",
+                color: "hsl(46, 65%, 52%)",
               }}
             >
               إنشاء حساب
