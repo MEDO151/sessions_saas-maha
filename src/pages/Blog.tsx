@@ -1,74 +1,16 @@
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Calendar, Clock, ArrowRight } from "lucide-react";
 import mainImg from "../assets/hero.jpg";
+import { blogPosts } from "@/data/blogPosts";
 
 const Blog = () => {
   const fadeIn = {
     hidden: { opacity: 0, y: 20 },
     visible: { opacity: 1, y: 0 },
   };
-
-  const blogPosts = [
-    {
-      id: 1,
-      title: "قوة التعاطف مع الذات في التطور الشخصي",
-      excerpt:
-        "اكتشف كيف يمكن للّطف مع نفسك أن يسرّع رحلتك نحو الشفاء والتحول الإيجابي.",
-      category: "النمو",
-      date: "15 أبريل 2025",
-      readTime: "قراءة لمدة 5 دقائق",
-      image: "gradient-primary",
-    },
-    {
-      id: 2,
-      title: "فهم صوتك الداخلي",
-      excerpt: "تعلم التمييز بين ذاتك الحقيقية وصوت الشك الذي يعيق تقدمك.",
-      category: "اكتشاف الذات",
-      date: "10 أبريل 2025",
-      readTime: "قراءة لمدة 7 دقائق",
-      image: "gradient-primary",
-    },
-    {
-      id: 3,
-      title: "بناء المرونة العاطفية",
-      excerpt:
-        "استراتيجيات عملية لتطوير القوة الداخلية لمواجهة تحديات الحياة برقي وثبات.",
-      category: "الرفاهية",
-      date: "5 أبريل 2025",
-      readTime: "قراءة لمدة 6 دقائق",
-      image: "gradient-primary",
-    },
-    {
-      id: 4,
-      title: "الرحلة من الألم إلى الهدف",
-      excerpt: "كيف نحوّل التجارب الصعبة إلى مصدر للحكمة والقوة الشخصية.",
-      category: "الشفاء",
-      date: "28 مارس 2025",
-      readTime: "قراءة لمدة 8 دقائق",
-      image: "gradient-primary",
-    },
-    {
-      id: 5,
-      title: "وضع الحدود بحب",
-      excerpt: "إن إنشاء حدود صحية لا يعني القسوة، بل هو فن احترام الذات.",
-      category: "النمو",
-      date: "20 مارس 2025",
-      readTime: "قراءة لمدة 5 دقائق",
-      image: "gradient-primary",
-    },
-    {
-      id: 6,
-      title: "ممارسات اليقظة في الحياة اليومية",
-      excerpt:
-        "تقنيات بسيطة وفعالة لجلب مزيد من الوعي والسلام إلى روتينك اليومي.",
-      category: "الرفاهية",
-      date: "15 مارس 2025",
-      readTime: "قراءة لمدة 6 دقائق",
-      image: "gradient-primary",
-    },
-  ];
 
   const categories = ["الكل", "الشفاء", "النمو", "الرفاهية", "اكتشاف الذات"];
 
@@ -136,7 +78,13 @@ const Blog = () => {
                 transition={{ duration: 0.6, delay: index * 0.1 }}
               >
                 <Card className="overflow-hidden flex flex-col justify-between h-full hover:shadow-elegant transition-shadow duration-300">
-                  <div className={`h-48 ${post.image}`} />
+                  <div className="h-48 overflow-hidden">
+                    <img
+                      src={post.image}
+                      alt={post.title}
+                      className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                    />
+                  </div>
                   <div className="p-6 space-y-4 flex flex-col flex-grow">
                     <div className="flex items-center justify-between text-sm text-muted-foreground">
                       <span className="px-3 py-1 bg-primary/10 text-primary rounded-full text-xs font-medium">
@@ -161,9 +109,16 @@ const Blog = () => {
                         <Calendar className="w-4 h-4" />
                         <span>{post.date}</span>
                       </div>
-                      <Button variant="ghost" size="sm" className="gap-2">
-                        اقرأ المزيد
-                        <ArrowRight className="w-4 h-4" />
+                      <Button
+                        variant="ghost"
+                        size="sm"
+                        asChild
+                        className="gap-2"
+                      >
+                        <Link to={`/blog/${post.id}`}>
+                          اقرأ المزيد
+                          <ArrowRight className="w-4 h-4" />
+                        </Link>
                       </Button>
                     </div>
                   </div>

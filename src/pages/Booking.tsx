@@ -1,27 +1,44 @@
-import { useState } from 'react';
-import { motion } from 'framer-motion';
-import { Button } from '@/components/ui/button';
-import { Card } from '@/components/ui/card';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
-import { Textarea } from '@/components/ui/textarea';
-import { Checkbox } from '@/components/ui/checkbox';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Video, Calendar, Clock, CheckCircle2 } from 'lucide-react';
-import { toast } from 'sonner';
+import { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
+import { motion } from "framer-motion";
+import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
+import { Checkbox } from "@/components/ui/checkbox";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { Video, Calendar, Clock, CheckCircle2 } from "lucide-react";
+import { toast } from "sonner";
 import mainImg from "../assets/hero.jpg";
 
 const Booking = () => {
+  const location = useLocation();
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    sessionType: '',
-    preferredDate: '',
-    preferredTime: '',
-    notes: '',
+    name: "",
+    email: "",
+    phone: "",
+    sessionType: "",
+    preferredDate: "",
+    preferredTime: "",
+    notes: "",
     privacyAccepted: false,
   });
+
+  useEffect(() => {
+    if (location.state?.topic) {
+      setFormData((prev) => ({
+        ...prev,
+        notes: `أرغب في حجز جلسة لمناقشة موضوع: ${location.state.topic}`,
+      }));
+    }
+  }, [location.state]);
 
   const fadeIn = {
     hidden: { opacity: 0, y: 20 },
@@ -31,18 +48,20 @@ const Booking = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!formData.privacyAccepted) {
-      toast.error('يرجى قبول سياسة الخصوصية للمتابعة');
+      toast.error("يرجى قبول سياسة الخصوصية للمتابعة");
       return;
     }
-    toast.success('تم إرسال طلب الحجز! ستصلك رسالة تأكيد عبر البريد الإلكتروني تحتوي على رابط الجلسة على زووم قريبًا.');
+    toast.success(
+      "تم إرسال طلب الحجز! ستصلك رسالة تأكيد عبر البريد الإلكتروني تحتوي على رابط الجلسة على زووم قريبًا."
+    );
     setFormData({
-      name: '',
-      email: '',
-      phone: '',
-      sessionType: '',
-      preferredDate: '',
-      preferredTime: '',
-      notes: '',
+      name: "",
+      email: "",
+      phone: "",
+      sessionType: "",
+      preferredDate: "",
+      preferredTime: "",
+      notes: "",
       privacyAccepted: false,
     });
   };
@@ -53,7 +72,6 @@ const Booking = () => {
 
   return (
     <div className="min-h-screen">
-
       <div
         className="fixed inset-0 -z-10"
         style={{
@@ -92,7 +110,9 @@ const Booking = () => {
             <Card className="p-6 text-center">
               <Video className="w-10 h-10 text-primary mx-auto mb-3" />
               <h3 className="font-semibold mb-2">عبر الإنترنت على زووم</h3>
-              <p className="text-sm text-muted-foreground">يمكنك الانضمام من أي مكان</p>
+              <p className="text-sm text-muted-foreground">
+                يمكنك الانضمام من أي مكان
+              </p>
             </Card>
             <Card className="p-6 text-center">
               <Clock className="w-10 h-10 text-primary mx-auto mb-3" />
@@ -102,7 +122,9 @@ const Booking = () => {
             <Card className="p-6 text-center">
               <CheckCircle2 className="w-10 h-10 text-primary mx-auto mb-3" />
               <h3 className="font-semibold mb-2">أسلوب مخصص لك</h3>
-              <p className="text-sm text-muted-foreground">مصمم حسب احتياجاتك الفردية</p>
+              <p className="text-sm text-muted-foreground">
+                مصمم حسب احتياجاتك الفردية
+              </p>
             </Card>
           </div>
         </div>
@@ -127,7 +149,7 @@ const Booking = () => {
                       id="name"
                       placeholder="اكتب اسمك"
                       value={formData.name}
-                      onChange={(e) => handleChange('name', e.target.value)}
+                      onChange={(e) => handleChange("name", e.target.value)}
                       required
                     />
                   </div>
@@ -139,7 +161,7 @@ const Booking = () => {
                       type="email"
                       placeholder="your@email.com"
                       value={formData.email}
-                      onChange={(e) => handleChange('email', e.target.value)}
+                      onChange={(e) => handleChange("email", e.target.value)}
                       required
                     />
                   </div>
@@ -152,7 +174,7 @@ const Booking = () => {
                     type="tel"
                     placeholder="+966 XXX XXX XXX"
                     value={formData.phone}
-                    onChange={(e) => handleChange('phone', e.target.value)}
+                    onChange={(e) => handleChange("phone", e.target.value)}
                   />
                 </div>
 
@@ -160,16 +182,24 @@ const Booking = () => {
                   <Label htmlFor="sessionType">نوع الجلسة *</Label>
                   <Select
                     value={formData.sessionType}
-                    onValueChange={(value) => handleChange('sessionType', value)}
+                    onValueChange={(value) =>
+                      handleChange("sessionType", value)
+                    }
                     required
                   >
                     <SelectTrigger>
                       <SelectValue placeholder="اختر نوع الجلسة" />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="developmental">استشارة تطويرية</SelectItem>
-                      <SelectItem value="therapeutic">استشارة علاجية</SelectItem>
-                      <SelectItem value="discovery">جلسة تعريفية (15 دقيقة - مجانًا)</SelectItem>
+                      <SelectItem value="developmental">
+                        استشارة تطويرية
+                      </SelectItem>
+                      <SelectItem value="therapeutic">
+                        استشارة علاجية
+                      </SelectItem>
+                      <SelectItem value="discovery">
+                        جلسة تعريفية (15 دقيقة - مجانًا)
+                      </SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
@@ -181,7 +211,9 @@ const Booking = () => {
                       id="preferredDate"
                       type="date"
                       value={formData.preferredDate}
-                      onChange={(e) => handleChange('preferredDate', e.target.value)}
+                      onChange={(e) =>
+                        handleChange("preferredDate", e.target.value)
+                      }
                       required
                     />
                   </div>
@@ -192,7 +224,9 @@ const Booking = () => {
                       id="preferredTime"
                       type="time"
                       value={formData.preferredTime}
-                      onChange={(e) => handleChange('preferredTime', e.target.value)}
+                      onChange={(e) =>
+                        handleChange("preferredTime", e.target.value)
+                      }
                       required
                     />
                   </div>
@@ -205,7 +239,7 @@ const Booking = () => {
                     placeholder="أخبرني بما ترغب بالتركيز عليه أو أي أسئلة لديك..."
                     rows={4}
                     value={formData.notes}
-                    onChange={(e) => handleChange('notes', e.target.value)}
+                    onChange={(e) => handleChange("notes", e.target.value)}
                   />
                 </div>
 
@@ -213,24 +247,32 @@ const Booking = () => {
                   <Checkbox
                     id="privacy"
                     checked={formData.privacyAccepted}
-                    onCheckedChange={(checked) => handleChange('privacyAccepted', checked as boolean)}
-                    
+                    onCheckedChange={(checked) =>
+                      handleChange("privacyAccepted", checked as boolean)
+                    }
                   />
                   <label
                     htmlFor="privacy"
                     className="text-sm ml-5 text-muted-foreground leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
                   >
-                    أوافق على سياسة الخصوصية وأسمح باستلام تفاصيل الجلسة عبر البريد الإلكتروني *
+                    أوافق على سياسة الخصوصية وأسمح باستلام تفاصيل الجلسة عبر
+                    البريد الإلكتروني *
                   </label>
                 </div>
 
-                <Button type="submit" variant="gold" size="xl" className="w-full">
+                <Button
+                  type="submit"
+                  variant="gold"
+                  size="xl"
+                  className="w-full"
+                >
                   <Calendar className="mr-2" />
                   احجز الآن
                 </Button>
 
                 <p className="text-sm text-muted-foreground text-center">
-                  ستتلقى رسالة تأكيد على بريدك الإلكتروني تحتوي على رابط الجلسة خلال 24 ساعة.
+                  ستتلقى رسالة تأكيد على بريدك الإلكتروني تحتوي على رابط الجلسة
+                  خلال 24 ساعة.
                 </p>
               </form>
             </Card>
